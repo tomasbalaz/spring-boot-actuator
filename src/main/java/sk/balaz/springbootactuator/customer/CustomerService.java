@@ -1,6 +1,7 @@
 package sk.balaz.springbootactuator.customer;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +20,7 @@ public class CustomerService {
     }
 
     @Transactional(readOnly = true)
+    @Cacheable(cacheNames = {"customer-by-id"})
     public Customer getCustomer(Long id) {
         return customerRepository.findById(id)
                 .orElseThrow(() -> new CustomerNotFoundException(String.format("Customer %s not found", id)));
