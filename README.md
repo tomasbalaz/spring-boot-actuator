@@ -6,3 +6,5 @@ covers basic Spring boot actuator concepts :
 - How to use SpringBoot Actuator feature to make application production ready 
 - Explore various Actuator API endpoints 
 - How to perform application health checks
+- Enable Prometheus Metrics
+- Prometheus / Grafana GUI
