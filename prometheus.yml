@@ -1,0 +1,19 @@
+global:
+  scrape_interval:     15s # Default scrape interval
+
+scrape_configs:
+  - job_name: 'prometheus' # Job to scrape Prometheus metrics
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: 'spring-actuator'
+    metrics_path: '/actuator/prometheus' # Job to scrape application metrics
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['192.168.0.121:8080']
+
+
+#  docker run -d -p 9090:9090 -v /home/tomas/IdeaProjects/Workspaces/Experiments/spring-boot-actuator/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus
+
+#  docker run -d -p 3000:3000 grafana/grafana
